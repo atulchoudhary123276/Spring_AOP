@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+<!--    <aop:aspectj-autoproxy/>-->
+<!--    If the target object to be proxied implements at least one interface, a JDK dynamic proxy is used.
+ All of the interfaces implemented by the target type are proxied.
+If the target object does not implement any interfaces, a CGLIB proxy is created. by below two Ways-->
+
+<!--   1. To force the use of CGLIB proxies,
+set the value of the proxy-target-class attribute of the <aop:config> element to true,-->
+<!--    <aop:config proxy-target-class="true"/>-->
+
+<!--    2.To force CGLIB proxying when you use the @AspectJ auto-proxy support,
+set the proxy-target-class attribute of the <aop:aspectj-autoproxy> element to true-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- bean definitions here -->
+    <bean name="payment" class="org.example.PaymentService"/>
+
+
+<!--    Aspect bean definition-->
+    <bean name="myAspect" class="org.Aop.MyAspect"/>
+
+</beans>
